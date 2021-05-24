@@ -2,8 +2,9 @@ const numberRef = document.querySelector('[type="number"]');
 const renderRef = document.querySelector('[data-action="render"]');
 const destroyRef = document.querySelector('[data-action="destroy"]');
 const boxesRef = document.querySelector('#boxes');
-renderRef.addEventListener('click', createBoxes);
+
 destroyRef.addEventListener('click', destroyBoxes);
+renderRef.addEventListener('click', createBoxes);
 numberRef.addEventListener('input', amountValue);
 let amount  = 0;
  function amountValue (event) {
@@ -25,5 +26,6 @@ function createBoxes() {
     }
 };
 function destroyBoxes() {
-  boxesRef.remove('div')
+  const children = boxesRef.childNodes;
+  Array.from(children).forEach(child => child.remove())
 };
